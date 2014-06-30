@@ -1,16 +1,5 @@
 
 section
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
-  article hoge
+  - @dummy.each do |d|
+    article
+      img[src="#{d["url"]}"]

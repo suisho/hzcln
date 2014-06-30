@@ -46,3 +46,8 @@ gem 'neat'
 gem 'rails-assets-normalize.css'
 gem 'rails-assets-backbone'
 gem 'rails-assets-backbone.marionette'
+
+group :development do
+  gem 'tumblr_client'
+  gem "pry-debugger"
+end
