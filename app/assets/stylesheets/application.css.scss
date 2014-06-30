@@ -13,5 +13,14 @@
  */
 
 @import "bourbon";
-@import "_grid_setting";
+@import "grid_settings";
 @import "neat";
+
+section{
+  @include outer-container();
+  article{
+    @include span-columns(3 of 12);
+    @include omega(4n);
+    background:pink;
+  }
+}
