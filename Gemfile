@@ -43,5 +43,6 @@ gem 'spring',        group: :development
 gem 'slim-rails'
 gem 'bourbon'
 gem 'neat'
+gem 'rails-assets-normalize.css'
 gem 'rails-assets-backbone'
 gem 'rails-assets-backbone.marionette'

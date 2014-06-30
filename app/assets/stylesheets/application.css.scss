@@ -11,7 +11,7 @@
  * file per style scope.
  *
  */
-
+@import "normalize.css";
 @import "bourbon";
 @import "grid_settings";
 @import "neat";
@@ -19,8 +19,10 @@
 section{
   @include outer-container();
   article{
-    @include span-columns(3 of 12);
-    @include omega(4n);
+    $col : 3;
+    $omega : round(12/$col)+ n;
+    @include span-columns($col of 12);
+    @include omega($omega);
     background:pink;
   }
 }
