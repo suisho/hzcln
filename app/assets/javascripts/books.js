@@ -1,30 +1,39 @@
-(function($){
-  $(function(){
-    var PageView = Backbone.Marionette.ItemView.extend({
-      collectionView : BookView
-    })
+var PageView = Backbone.Marionette.ItemView.extend({
+  collectionView : BookView
+})
+var BookView = Backbone.Marionette.CollectionView.extend({
+  el : ".book",
+  childView : PageView,
+})
 
 
-    var BookView = Backbone.Marionette.CollectionView.extend({
-      el : ".book",
-      childView : PageView,
-      initialize : function(){
-        var self = this
-        this.$(".page").each(function(){
-          var pageView = new PageView({
-            el : $(this)
-          })
-          self.children.add(pageView)
-        })
-      }
+Backbone.EachView = function(viewClass, selector){
+  return $(selector).map(function(){
+    return new viewClass({
+      el : $(this)
     })
-
-    var BookApplication = new Backbone.Marionette.Application()
-    BookApplication.addRegions({
-      container: "#container"
-    })
-    BookApplication.start()
-    var bookView = new BookView()
-    console.log(bookView.children)
   })
-})(jQuery)
+}
+
+$(function(){
+  console.log("bp")
+
+  var BookApplication = new Backbone.Marionette.Application()
+  BookApplication.addRegions({
+    container: "#container"
+  })
+  BookApplication.addInitializer(function(){
+    var bookView = BookApplication.bookView = new BookView()
+    console.log(Backbone.EachView(PageView, ".page"))
+
+    $(".page").each(function(){
+      var pageView = new PageView({
+        el : $(this)
+      })
+      bookView.children.add(pageView)
+    })
+
+  })
+  BookApplication.start()
+})
+  
