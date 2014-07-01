@@ -16,13 +16,23 @@
 @import "grid_settings";
 @import "neat";
 
+body{
+  padding:10px;
+}
 section{
   @include outer-container();
+  $col : 3;
+  $omega : round(12/$col)+ n;
+  
   article{
-    $col : 3;
-    $omega : round(12/$col)+ n;
-    @include span-columns($col of 12);
+    @include span-columns($col);
     @include omega($omega);
-    background:pink;
+    height : 300px;
+    
+    img {
+      max-width: 100%;
+      max-height : 100%;
+      
+    }
   }
 }
